@@ -1,0 +1,15 @@
+{
+  "name": "srootd",
+  "version": "1.0.0",
+  "description": "Provide the inspiration of today's outfit",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Shelley Chen",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.15.4",
+    "parcel": "^2.15.4"
+  }
+}
