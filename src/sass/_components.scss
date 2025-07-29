@@ -173,9 +173,12 @@
   margin: 5rem auto;
   text-align: center;
 
+  &__space {
+    margin-top: 20rem;
+  }
   svg {
-    height: 6rem;
-    width: 6rem;
+    height: 5rem;
+    width: 5rem;
     fill: base.$color-primary;
     animation: rotate 2s infinite linear;
   }
