@@ -21,7 +21,7 @@
       <div class="start">
         <button class="btn start__btn">
           <svg class="search__icon">
-            <use href="src/img/icons.svg#icon-MagicWand"></use>
+            <use href="src/img/icons.svg#icon-magicWand"></use>
           </svg>
           <span>inspiration</span>
         </button>
@@ -29,20 +29,20 @@
 
       <nav class="nav">
         <ul class="nav__list">
-          <li class="nav__item">
+          <!-- <li class="nav__item">
             <button class="nav__btn nav__btn--add-recipe">
               <svg class="nav__icon">
-                <use href="src/img/icons.svg#icon-edit"></use>
+                <use href="src/img/icons.svg#icon-funnel"></use>
               </svg>
               <span>Filter</span>
             </button>
-          </li>
+          </li> -->
           <li class="nav__item">
             <button class="nav__btn nav__btn--bookmarks">
               <svg class="nav__icon">
-                <use href="src/img/icons.svg#icon-bookmark"></use>
+                <use href="src/img/icons.svg#icon-folder-open"></use>
               </svg>
-              <span>Bookmarks</span>
+              <span>Saved</span>
             </button>
             <div class="bookmarks">
               <ul class="bookmarks__list">
@@ -77,7 +77,7 @@
       </nav>
     </header>
 
-    <div class="imgsContainer preview">
+    <div class="preview imgsContainer">
       <!-- <div class="preview__top">
         <div class="preview__fig">
           <img src="src/img/sergey-sokolov-nebs1m0P1JQ-unsplash-s.jpg" alt="Test" />
@@ -126,48 +126,32 @@
   </div>
 
   <div class="overlay hidden"></div>
-  <div class="add-recipe-window hidden">
+  <div class="filter-window hidden">
     <button class="btn--close-modal">&times;</button>
-    <form class="upload">
-      <!-- <div class="upload__column">
-        <h3 class="upload__heading">Recipe data</h3>
-        <label>Title</label>
-        <input value="TEST16" required name="title" type="text" />
-        <label>URL</label>
-        <input value="TEST16" required name="sourceUrl" type="text" />
-        <label>Image URL</label>
-        <input value="TEST16" required name="image" type="text" />
-        <label>Publisher</label>
-        <input value="TEST16" required name="publisher" type="text" />
-        <label>Prep time</label>
-        <input value="23" required name="cookingTime" type="number" />
-        <label>Servings</label>
-        <input value="23" required name="servings" type="number" />
+    <form class="filter">
+      <div class="filter__column">
+        <h3 class="filter__heading">Gender</h3>
+        <label><input type="radio" name="gender" value="male" /> Male</label>
+        <label><input type="radio" name="gender" value="female" /> Female</label>
+      </div>
+      <div class="filter__column">
+        <h3 class="filter__heading">Color</h3>
+        <label><input type="radio" name="color" value="black" /> Black</label>
+        <label><input type="radio" name="color" value="white" /> White</label>
+        <label><input type="radio" name="color" value="yellow" /> Yellow</label>
+        <label><input type="radio" name="color" value="orange" /> Orange</label>
+        <label><input type="radio" name="color" value="magenta" /> Magenta</label>
+        <label><input type="radio" name="color" value="red" /> Red</label>
+        <label><input type="radio" name="color" value="green" /> Green</label>
+        <label><input type="radio" name="color" value="blue" /> Blue</label>
       </div>
 
-      <div class="upload__column">
-        <h3 class="upload__heading">Ingredients</h3>
-        <label>Ingredient 1</label>
-        <input value="0.5,kg,Rice" type="text" required name="ingredient-1"
-          placeholder="Format: 'Quantity,Unit,Description'" />
-        <label>Ingredient 2</label>
-        <input value="1,,Avocado" type="text" name="ingredient-2" placeholder="Format: 'Quantity,Unit,Description'" />
-        <label>Ingredient 3</label>
-        <input value=",,salt" type="text" name="ingredient-3" placeholder="Format: 'Quantity,Unit,Description'" />
-        <label>Ingredient 4</label>
-        <input type="text" name="ingredient-4" placeholder="Format: 'Quantity,Unit,Description'" />
-        <label>Ingredient 5</label>
-        <input type="text" name="ingredient-5" placeholder="Format: 'Quantity,Unit,Description'" />
-        <label>Ingredient 6</label>
-        <input type="text" name="ingredient-6" placeholder="Format: 'Quantity,Unit,Description'" />
-      </div>
-
-      <button class="btn upload__btn">
+      <button class="btn filter__btn">
         <svg>
-          <use href="src/img/icons.svg#icon-upload-cloud"></use>
+          <use href="src/img/icons.svg#icon-funnel"></use>
         </svg>
-        <span>Upload</span>
-      </button> -->
+        <span>filter</span>
+      </button>
     </form>
   </div>
 </body>

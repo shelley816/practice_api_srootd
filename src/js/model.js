@@ -8,9 +8,7 @@ export const state = {
 
 export const loadImages = async function (kwArr) {
   try {
-    const urls = kwArr.map(
-      (key) => `${API_URL}/random?query=outfit+female+${key}`
-    );
+    const urls = kwArr.map((key) => `${API_URL}/random?query=outfit+${key}`);
 
     const resArr = await Promise.all(
       urls.map((url) =>

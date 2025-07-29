@@ -10,17 +10,18 @@ import { KEY_WORDS } from "./config.js";
 // }
 
 // const keyWords = ["top", "bottom", "jacket", "dress"];
-const keyWords = KEY_WORDS;
+const type = KEY_WORDS;
 const errMessage = "Loading images failed, please try again later!";
 const limitMessage = "No more images to load, please try 60 minutes later!";
 const btnInspiration = document.querySelector(".start__btn");
+const btnFilter = document.querySelector(".filter__btn");
 
 const controlImages = async function () {
   try {
     imagesView.renderSpiner();
 
     // Loading images
-    await model.loadImages(keyWords);
+    await model.loadImages(type);
 
     // Rendering images
     imagesView.render(model.state.imgsUnsplash);
@@ -28,9 +29,17 @@ const controlImages = async function () {
     console.error(err);
   }
 };
-// controlImages(keyWords);
+// controlImages(type);
 
 btnInspiration.addEventListener("click", function (e) {
   e.preventDefault();
-  controlImages(keyWords);
+  controlImages(type);
+});
+
+btnFilter.addEventListener("click", function (e) {
+  e.preventDefault();
+  const gender = document.querySelector('input[name="gender"]:checked')?.value;
+  const color = document.querySelector('input[name="color"]:checked')?.value;
+
+  console.log(`${gender}&color=${color}`);
 });
