@@ -81,6 +81,9 @@
 
   &__list {
     list-style: none;
+    p {
+      color: base.$color-t-dark;
+    }
   }
 
   &__field {

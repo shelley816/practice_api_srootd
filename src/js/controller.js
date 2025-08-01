@@ -3,43 +3,43 @@ import "regenerator-runtime/runtime";
 
 import * as model from "./model.js";
 import imagesView from "./views/imagesView.js";
+import filterView from "./views/filterView.js";
 
-import { KEY_WORDS } from "./config.js";
 // if (model.hot) {
 //   model.hot.accept();
 // }
 
-// const keyWords = ["top", "bottom", "jacket", "dress"];
-const type = KEY_WORDS;
-const errMessage = "Loading images failed, please try again later!";
-const limitMessage = "No more images to load, please try 60 minutes later!";
-const btnInspiration = document.querySelector(".start__btn");
-const btnFilter = document.querySelector(".filter__btn");
-
-const controlImages = async function () {
+const controlImages = async function (kwArr) {
   try {
     imagesView.renderSpiner();
 
     // Loading images
-    await model.loadImages(type);
+    await model.loadImages(kwArr);
 
     // Rendering images
-    imagesView.render(model.state.imgsUnsplash);
+    imagesView.render(model.state);
   } catch (err) {
-    console.error(err);
+    imagesView.renderError();
   }
 };
-// controlImages(type);
 
-btnInspiration.addEventListener("click", function (e) {
-  e.preventDefault();
-  controlImages(type);
-});
+const controlFilterImages = async function (kwArr, data) {
+  try {
+    filterView.toggleWindow();
+    imagesView.renderSpiner();
 
-btnFilter.addEventListener("click", function (e) {
-  e.preventDefault();
-  const gender = document.querySelector('input[name="gender"]:checked')?.value;
-  const color = document.querySelector('input[name="color"]:checked')?.value;
+    // Loading images
+    await model.loadImages(kwArr, data);
 
-  console.log(`${gender}&color=${color}`);
-});
+    // Rendering images
+    imagesView.render(model.state);
+  } catch (err) {
+    filterView.renderError();
+  }
+};
+
+const init = function () {
+  imagesView.addHandlerRender(controlImages);
+  filterView.addHandlerFilter(controlFilterImages);
+};
+init();

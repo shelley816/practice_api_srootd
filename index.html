@@ -29,15 +29,15 @@
 
       <nav class="nav">
         <ul class="nav__list">
-          <!-- <li class="nav__item">
-            <button class="nav__btn nav__btn--add-recipe">
+          <li class="nav__item">
+            <button class="nav__btn nav__btn--filter">
               <svg class="nav__icon">
                 <use href="src/img/icons.svg#icon-funnel"></use>
               </svg>
               <span>Filter</span>
             </button>
-          </li> -->
-          <li class="nav__item">
+          </li>
+          <!-- <li class="nav__item">
             <button class="nav__btn nav__btn--bookmarks">
               <svg class="nav__icon">
                 <use href="src/img/icons.svg#icon-folder-open"></use>
@@ -53,11 +53,11 @@
                     </svg>
                   </div>
                   <p>
-                    No bookmarks yet. Find a nice recipe and bookmark it :)
+                    No images yet. Fine a nice inspiration and save it :)
                   </p>
                 </div>
 
-                <!-- <li class="preview">
+                <li class="preview">
                     <a class="preview__link" href="#23456">
                       <figure class="preview__fig">
                         <img src="src/img/test-1.jpg" alt="Test" />
@@ -69,15 +69,24 @@
                         <p class="preview__publisher">The Pioneer Woman</p>
                       </div>
                     </a>
-                  </li> -->
+                  </li>
               </ul>
             </div>
-          </li>
+          </li> -->
         </ul>
       </nav>
     </header>
 
     <div class="preview imgsContainer">
+      <div class="space"></div>
+      <div class="message">
+        <div>
+          <svg>
+            <use href="src/img/icons.svg#icon-smile"></use>
+          </svg>
+        </div>
+        <p>Start by searching for a recipe or an ingredient. Have fun!</p>
+      </div>
       <!-- <div class="preview__top">
         <div class="preview__fig">
           <img src="src/img/sergey-sokolov-nebs1m0P1JQ-unsplash-s.jpg" alt="Test" />
@@ -128,31 +137,34 @@
   <div class="overlay hidden"></div>
   <div class="filter-window hidden">
     <button class="btn--close-modal">&times;</button>
-    <form class="filter">
-      <div class="filter__column">
-        <h3 class="filter__heading">Gender</h3>
-        <label><input type="radio" name="gender" value="male" /> Male</label>
-        <label><input type="radio" name="gender" value="female" /> Female</label>
-      </div>
-      <div class="filter__column">
-        <h3 class="filter__heading">Color</h3>
-        <label><input type="radio" name="color" value="black" /> Black</label>
-        <label><input type="radio" name="color" value="white" /> White</label>
-        <label><input type="radio" name="color" value="yellow" /> Yellow</label>
-        <label><input type="radio" name="color" value="orange" /> Orange</label>
-        <label><input type="radio" name="color" value="magenta" /> Magenta</label>
-        <label><input type="radio" name="color" value="red" /> Red</label>
-        <label><input type="radio" name="color" value="green" /> Green</label>
-        <label><input type="radio" name="color" value="blue" /> Blue</label>
-      </div>
+    <div class="filterContainer">
+      <form class="filter">
+        <!-- <div class="filter__column">
+          <h3 class="filter__heading">Gender</h3>
+          <label><input type="radio" name="gender" value="male" /> Male</label>
+          <label><input type="radio" name="gender" value="female" /> Female</label>
+        </div>
+        <div class="filter__column">
+          <h3 class="filter__heading">Color</h3>
+          <label><input type="radio" name="color" value="black" /> Black</label>
+          <label><input type="radio" name="color" value="white" /> White</label>
+          <label><input type="radio" name="color" value="yellow" /> Yellow</label>
+          <label><input type="radio" name="color" value="orange" /> Orange</label>
+          <label><input type="radio" name="color" value="magenta" /> Magenta</label>
+          <label><input type="radio" name="color" value="red" /> Red</label>
+          <label><input type="radio" name="color" value="green" /> Green</label>
+          <label><input type="radio" name="color" value="blue" /> Blue</label>
+        </div>
 
-      <button class="btn filter__btn">
-        <svg>
-          <use href="src/img/icons.svg#icon-funnel"></use>
-        </svg>
-        <span>filter</span>
-      </button>
-    </form>
+        <button class="btn filter__btn">
+          <svg>
+            <use href="src/img/icons.svg#icon-funnel"></use>
+          </svg>
+          <span>filter</span>
+        </button> -->
+      </form>
+    </div>
+  </div>
   </div>
 </body>
 

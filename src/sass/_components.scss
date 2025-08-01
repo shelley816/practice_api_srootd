@@ -24,6 +24,10 @@
   }
 }
 
+.btn__grey {
+  background-image: base.$grey-gradient;
+}
+
 .btn {
   @extend %btn;
 
@@ -173,9 +177,6 @@
   margin: 5rem auto;
   text-align: center;
 
-  &__space {
-    margin-top: 20rem;
-  }
   svg {
     height: 5rem;
     width: 5rem;
@@ -199,6 +200,7 @@
   max-width: 40rem;
   margin: 0 auto;
   padding: 5rem 4rem;
+  color: base.$color-t-light;
 
   display: flex;
 
@@ -214,5 +216,11 @@
     font-size: 1.8rem;
     line-height: 1.5;
     font-weight: 600;
+  }
+}
+
+.error {
+  svg {
+    fill: base.$color-third;
   }
 }

@@ -1,8 +1,11 @@
 // $color-primary: #f59a83;
-$color-primary: #8bffc1;
+$color-primary: #50ed99;
 $color-secondary: #b9ffc3;
+$color-third: #ff886b;
 $color-dark-1: #38332d;
 $color-dark-2: #26231f;
+$color-grey-1: #999999;
+$color-grey-2: #c0c0c0;
 $color-light-1: #d9d9d9;
 
 $color-grey-light-1: #d9d9d9; // Light background
@@ -14,6 +17,7 @@ $color-t-dark: #26231f; // Normal text
 $color-t-light: #d9d9d9; // Lighter text
 
 $gradient: linear-gradient(to right bottom, $color-primary, $color-secondary);
+$grey-gradient: linear-gradient(to right bottom, $color-grey-1, $color-grey-2);
 $bg-gradient: linear-gradient(to right bottom, $color-dark-1, $color-dark-2);
 $dark-gradient: linear-gradient(
   to bottom,

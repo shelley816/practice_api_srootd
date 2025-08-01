@@ -1,49 +1,37 @@
 import { API_URL } from "./config.js";
-
-const apiKey = process.env.API_ACCESS_KEY;
+import { getJSON } from "./helpers.js";
+import { KEY_WORDS } from "./config.js";
 
 export const state = {
   imgsUnsplash: {},
 };
 
-export const loadImages = async function (kwArr) {
+export const loadImages = async function (kwArr, query = "") {
   try {
-    const urls = kwArr.map((key) => `${API_URL}/random?query=outfit+${key}`);
-
-    const resArr = await Promise.all(
-      urls.map((url) =>
-        fetch(url, {
-          headers: {
-            Authorization: `Client-ID ${apiKey}`,
-          },
-        }).then((res) => {
-          const rateLimitRemaining = res.headers.get("x-ratelimit-remaining");
-          console.log(rateLimitRemaining); // 剩餘次數
-
-          if (rateLimitRemaining === 0)
-            throw new Error(`${limitMessage} (${res.status})`);
-          if (!res.ok) throw new Error(`${errMessage} (${res.status})`);
-          return res.json();
-        })
-      )
+    const urls = kwArr.map(
+      (key) => `${API_URL}/photos/random?query=outfit+${key}${query}`
     );
-
-    const imgsData = resArr.map((res, index) => {
-      const imgData = res;
+    const data = await getJSON(urls);
+    const imgsData = data.map((img, index) => {
       return {
-        id: imgData.id,
-        author: imgData.user.name,
-        description: imgData.alt_description,
-        color: imgData.color,
-        urls: imgData.urls,
-        keyword: kwArr[index],
+        id: img.id,
+        user: {
+          name: img.user.name,
+          profileImage: img.user.profile_image,
+          link: img.user.links.html,
+        },
+        alt: img.alt_description,
+        description: img.description,
+        color: img.color,
+        urls: img.urls,
+        keyword: KEY_WORDS[index],
       };
     });
     state.imgsUnsplash = imgsData;
-    console.log(state.imgsUnsplash);
 
-    return state.imgsUnsplash;
+    return state;
   } catch (err) {
-    console.error(err);
+    console.error(`${err} 💥💥💥`);
+    throw err;
   }
 };
