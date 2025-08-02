@@ -1,7 +1,8 @@
+import View from "./View.js";
 import icon from "url:../../img/icons.svg"; // Parcel 2
 import { KEY_WORDS } from "../config";
 
-class FilterView {
+class FilterView extends View {
   _parentEl = document.querySelector(".filter");
   _message = "Recipe was successfully uploaded ;)";
 
@@ -11,16 +12,10 @@ class FilterView {
   _btnClose = document.querySelector(".btn--close-modal");
 
   constructor() {
-    // super();
+    super();
     this._addHandlerShowWindow();
     this._addHandlerHideWindow();
     this._btnHandleClear();
-  }
-
-  render() {
-    const markup = this._generateMarkup();
-    this._clear();
-    this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
 
   addHandlerFilter(handler) {
@@ -74,54 +69,6 @@ class FilterView {
           input.checked = false;
         });
     });
-  }
-
-  _clear() {
-    this._parentEl.innerHTML = "";
-  }
-
-  renderSpiner() {
-    const markup = `
-      <div class="spinner">
-        <svg>
-          <use href="${icon}#icon-loader"></use>
-        </svg>
-      </div>
-    `;
-    this._clear();
-    this._parentEl.insertAdjacentHTML("afterbegin", markup);
-  }
-
-  renderError(message = this._errorMessage) {
-    const markup = `
-      <div class="space"></div>
-      <div class="error">
-        <div>
-          <svg>
-            <use href="${icon}#icon-alert-triangle"></use>
-          </svg>
-        </div>
-        <p>${message}</p>
-      </div>
-    `;
-    this._clear();
-    this._parentEl.insertAdjacentHTML("afterbegin", markup);
-  }
-
-  renderMessage(message = this._message) {
-    const markup = `
-      <div class="space"></div>
-      <div class="message">
-        <div>
-          <svg>
-            <use href="${icon}#icon-smile"></use>
-          </svg>
-        </div>
-        <p>${message}</p>
-      </div>
-    `;
-    this._clear();
-    this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
 
   _generateMarkup() {

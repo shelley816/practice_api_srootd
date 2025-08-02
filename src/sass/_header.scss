@@ -65,13 +65,12 @@
   }
 }
 
-.bookmarks {
-  padding: 1rem 0;
+.saved {
   position: absolute;
-  // right: 0;
-  right: -2.5rem;
+  right: 0;
+  // right: -2.5rem;
   z-index: 10;
-  width: 40rem;
+  width: 35rem;
   background-color: #fff;
   box-shadow: 0 0.8rem 5rem 2rem rgba(base.$color-t-dark, 0.1);
 
@@ -81,6 +80,7 @@
 
   &__list {
     list-style: none;
+    padding: 0rem 1rem;
     p {
       color: base.$color-t-dark;
     }
@@ -88,20 +88,30 @@
 
   &__field {
     cursor: pointer;
-    padding: 0 4rem;
-
-    display: flex;
-    align-items: center;
-    height: 100%;
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    padding: 2rem 1rem 0 1rem;
     transition: all 0.3s;
 
     &:hover {
-      background-color: base.$color-grey-light-2;
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    &:last-child {
+      padding-bottom: 2rem;
     }
   }
 
+  .preview__info {
+    position: relative;
+    padding: 0;
+  }
+
   &:hover,
-  .nav__btn--bookmarks:hover + & {
+  .nav__btn--saved:hover + & {
     visibility: visible;
     opacity: 1;
   }
