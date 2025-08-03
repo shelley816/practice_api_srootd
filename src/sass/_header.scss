@@ -71,7 +71,7 @@
   // right: -2.5rem;
   z-index: 10;
   width: 35rem;
-  background-color: #fff;
+  background-color: base.$color-dark-1;
   box-shadow: 0 0.8rem 5rem 2rem rgba(base.$color-t-dark, 0.1);
 
   visibility: hidden;
@@ -81,17 +81,14 @@
   &__list {
     list-style: none;
     padding: 0rem 1rem;
-    p {
-      color: base.$color-t-dark;
-    }
   }
 
   &__field {
     cursor: pointer;
     display: grid;
     position: relative;
-    grid-template-columns: 1fr 2fr;
-    gap: 1rem;
+    grid-template-columns: 1fr 3fr;
+    gap: 2rem;
     padding: 2rem 1rem 0 1rem;
     transition: all 0.3s;
 
@@ -105,9 +102,57 @@
     }
   }
 
+  .preview__item {
+    border-radius: 1rem;
+  }
+
   .preview__info {
     position: relative;
     padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    span {
+      font-size: 1.3rem;
+      color: base.$color-t-light;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .author > div {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: base.$color-t-light;
+    }
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+
+    .nav__btn {
+      position: absolute;
+      right: 0;
+      bottom: 0.5rem;
+      align-items: unset;
+      height: unset;
+      transition: all 0.3s;
+
+      svg {
+        margin: 0 auto;
+        padding: 0.8rem;
+        height: 5.5rem;
+        width: 5.5rem;
+      }
+
+      &:hover {
+        background-color: unset;
+        transform: scale(1.2);
+      }
+    }
   }
 
   &:hover,

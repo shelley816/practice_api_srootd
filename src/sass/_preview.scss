@@ -9,13 +9,8 @@
   &__top {
     position: relative;
     .preview__info {
-      padding-bottom: base.$header-height * 0.5;
       margin-bottom: base.$header-height;
       background: base.$dark-gradient-reverse;
-
-      @media only screen and (max-width: base.$bp-small) {
-        padding-bottom: math.div(base.$header-height, 1);
-      }
     }
 
     h2 {
@@ -31,6 +26,10 @@
     position: absolute;
     width: 100%;
     bottom: 0;
+
+    display: grid;
+    grid-template-columns: 11fr 1fr;
+    gap: 1rem;
   }
 
   &__wrap {
@@ -57,6 +56,7 @@
     border-radius: 2rem;
     overflow: hidden;
     .preview__info {
+      grid-template-columns: 1fr;
       background: base.$dark-gradient-reverse;
     }
   }
@@ -97,7 +97,7 @@
 
 .author {
   margin-top: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   a {
     display: inline-flex;
     align-items: center;
@@ -114,7 +114,7 @@
     height: 3rem;
     border-radius: 10rem;
     overflow: hidden;
-    border: 2px solid base.$color-grey-light-2;
+    // border: 2px solid base.$color-grey-light-2;
 
     img {
       width: 100%;
