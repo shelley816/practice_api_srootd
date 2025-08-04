@@ -80,7 +80,6 @@
 
   &__list {
     list-style: none;
-    padding: 0rem 1rem;
   }
 
   &__field {
@@ -89,16 +88,12 @@
     position: relative;
     grid-template-columns: 1fr 3fr;
     gap: 2rem;
-    padding: 2rem 1rem 0 1rem;
+    padding: 1rem 2rem;
     transition: all 0.3s;
 
-    &:hover {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-
-    &:last-child {
-      padding-bottom: 2rem;
+    &:hover,
+    &--active {
+      background-color: base.$color-dark-3;
     }
   }
 

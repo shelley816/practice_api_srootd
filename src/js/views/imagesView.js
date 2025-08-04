@@ -18,6 +18,14 @@ class ImagesView extends View {
     });
   }
 
+  addHandlerAddSave(handler) {
+    this._parentEl.addEventListener("click", function (e) {
+      const btn = e.target.closest(".btn--save");
+      if (!btn) return;
+      handler();
+    });
+  }
+
   _generateMarkup() {
     const [first] = this._data.imgsUnsplash;
 
@@ -44,9 +52,11 @@ class ImagesView extends View {
             </div>
           </div>
           <div class="saved__icon">
-            <button class="nav__btn">
+            <button class="nav__btn btn--save">
               <svg class="nav__icon">
-                <use href="${icon}#icon-star"></use>
+                <use href="${icon}#icon-star${
+      this._data.isAllSaved ? "-fill" : ""
+    }"></use>
               </svg>
             </button>
           </div>
@@ -60,15 +70,19 @@ class ImagesView extends View {
         return `
           <div class="preview__item">
             <div class="preview__fig">
-              <img src="${img.urls.regular}" alt="${img.alt}" />
+              <img src="${img.urls.small}" alt="${img.alt}" />
             </div>
             <div class="preview__info">
               <h2 class="preview__title">${img.keyword}</h2>
               <div class="author">
                 <a href="${img.user.link}" target="_blank">
-                  <div class="author__img">
+                  ${
+                    img.user.profileImage.small
+                      ? `<div class="author__img">
                     <img src="${img.user.profileImage.small}" alt="${img.user.bio}" />
-                  </div>
+                  </div>`
+                      : ""
+                  }
                   <h3 class="author__name">${img.user.name}</h3>
                 </a>
               </div>

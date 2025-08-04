@@ -31,6 +31,8 @@ const controlFilterImages = async function (kwArr, data) {
     // Loading images
     await model.loadImages(kwArr, data);
 
+    filterView.update(model.state);
+
     // Rendering images
     imagesView.render(model.state);
   } catch (err) {
@@ -38,8 +40,20 @@ const controlFilterImages = async function (kwArr, data) {
   }
 };
 
+const controlAddSaveImgs = function () {
+  const isSaved = model.checkIfAllSaved();
+
+  if (!isSaved) model.addSavedImgs(model.state.imgsUnsplash);
+  else model.deleteSavedImgs(model.state.imgsUnsplash);
+
+  imagesView.update(model.state);
+  console.log(model.state.savedImgs);
+  console.log(model.state.isAllSaved);
+};
+
 const init = function () {
   imagesView.addHandlerRender(controlImages);
+  imagesView.addHandlerAddSave(controlAddSaveImgs);
   filterView.addHandlerFilter(controlFilterImages);
 };
 init();

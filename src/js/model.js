@@ -3,7 +3,10 @@ import { getJSON } from "./helpers.js";
 import { KEY_WORDS } from "./config.js";
 
 export const state = {
-  imgsUnsplash: {},
+  imgsUnsplash: [],
+  curQuery: "",
+  savedImgs: [],
+  isAllSaved: false,
 };
 
 export const getDateTime = function () {
@@ -17,13 +20,16 @@ export const getDateTime = function () {
   return strTime;
 };
 
-export const loadImages = async function (kwArr, query = "") {
+export const loadImages = async function (kwArr, query = state.curQuery) {
   try {
+    // 預設 false
+    state.isAllSaved = false;
+
+    state.curQuery = query;
     const urls = kwArr.map(
       (key) => `${API_URL}/photos/random?query=outfit+${key}${query}`
     );
     const data = await getJSON(urls);
-    console.log(data);
     const imgsData = data.map((img, index) => {
       return {
         id: img.id,
@@ -42,7 +48,8 @@ export const loadImages = async function (kwArr, query = "") {
       };
     });
     state.imgsUnsplash = imgsData;
-    console.log(imgsData);
+
+    checkIfAllSaved();
 
     return state;
   } catch (err) {
@@ -50,3 +57,42 @@ export const loadImages = async function (kwArr, query = "") {
     throw err;
   }
 };
+
+export const addSavedImgs = function (imgsUnsplash) {
+  const exists = state.savedImgs.some((saved) =>
+    isImgsSetMatch(saved, imgsUnsplash)
+  );
+  if (exists) return;
+
+  state.savedImgs.push(imgsUnsplash);
+  state.isAllSaved = checkIfAllSaved();
+};
+
+export const deleteSavedImgs = function (imgsUnsplash) {
+  const matchIndex = state.savedImgs.findIndex((saved) =>
+    isImgsSetMatch(saved, imgsUnsplash)
+  );
+  if (matchIndex !== -1) state.savedImgs.splice(matchIndex, 1);
+
+  state.isAllSaved = checkIfAllSaved();
+};
+
+export function checkIfAllSaved() {
+  const currentIds = state.imgsUnsplash.map((img) => img.id);
+
+  const result = state.savedImgs.some((savedSet) => {
+    const savedIds = savedSet.map((img) => img.id);
+    return (
+      currentIds.length === savedIds.length &&
+      currentIds.every((id) => savedIds.includes(id))
+    );
+  });
+
+  state.isAllSaved = result;
+  return result;
+}
+
+function isImgsSetMatch(a, b) {
+  if (a.length !== b.length) return false;
+  return a.every((img, i) => img.id === b[i].id);
+}

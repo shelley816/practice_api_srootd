@@ -18,6 +18,16 @@ class FilterView extends View {
     this._btnHandleClear();
   }
 
+  update(data) {
+    // +female+green
+    const selectedValues = data.curQuery.split("+").filter(Boolean);
+    console.log(selectedValues);
+
+    this._parentEl.querySelectorAll('input[type="radio"]').forEach((input) => {
+      input.checked = selectedValues.includes(input.value);
+    });
+  }
+
   addHandlerFilter(handler) {
     this._parentEl.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -26,8 +36,6 @@ class FilterView extends View {
 
       const dataArr = [...new FormData(this)];
       const data = Object.fromEntries(dataArr);
-
-      if (!data.gender && !data.color) return;
 
       const gender = data.gender ? `+${data.gender}` : "";
       const color = data.color ? `+${data.color}` : "";
