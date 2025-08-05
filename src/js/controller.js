@@ -4,6 +4,7 @@ import "regenerator-runtime/runtime";
 import * as model from "./model.js";
 import imagesView from "./views/imagesView.js";
 import filterView from "./views/filterView.js";
+import saveView from "./views/saveView.js";
 
 // if (model.hot) {
 //   model.hot.accept();
@@ -18,6 +19,8 @@ const controlImages = async function (kwArr) {
 
     // Rendering images
     imagesView.render(model.state);
+
+    // Updating Saved Images
   } catch (err) {
     imagesView.renderError();
   }
@@ -41,19 +44,36 @@ const controlFilterImages = async function (kwArr, data) {
 };
 
 const controlAddSaveImgs = function () {
+  // Add/remove saved images
   const isSaved = model.checkIfAllSaved();
-
   if (!isSaved) model.addSavedImgs(model.state.imgsUnsplash);
   else model.deleteSavedImgs(model.state.imgsUnsplash);
 
+  // Update UI
   imagesView.update(model.state);
-  console.log(model.state.savedImgs);
-  console.log(model.state.isAllSaved);
+
+  // Render saved images
+  saveView.render(model.state);
+};
+
+const controlSavedImgs = async function () {
+  try {
+    saveView.render(model.state);
+  } catch (err) {
+    saveView.renderMessage();
+  }
+};
+
+const controlReloadImgs = function (data) {
+  model.reloadSavedImgs(data);
+  imagesView.render(model.state);
 };
 
 const init = function () {
   imagesView.addHandlerRender(controlImages);
   imagesView.addHandlerAddSave(controlAddSaveImgs);
   filterView.addHandlerFilter(controlFilterImages);
+  saveView.addHendlerRender(controlSavedImgs);
+  saveView.addHandlerClickSaved(controlReloadImgs);
 };
 init();

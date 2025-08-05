@@ -21,7 +21,6 @@ class FilterView extends View {
   update(data) {
     // +female+green
     const selectedValues = data.curQuery.split("+").filter(Boolean);
-    console.log(selectedValues);
 
     this._parentEl.querySelectorAll('input[type="radio"]').forEach((input) => {
       input.checked = selectedValues.includes(input.value);
@@ -55,7 +54,6 @@ class FilterView extends View {
       "click",
       function () {
         this.toggleWindow();
-        this.render();
       }.bind(this)
     );
   }
@@ -77,42 +75,6 @@ class FilterView extends View {
           input.checked = false;
         });
     });
-  }
-
-  _generateMarkup() {
-    return `
-        <div class="filter__column">
-            <h3 class="filter__heading">Gender</h3>
-            <label><input type="radio" name="gender" value="male" /> Male</label>
-            <label><input type="radio" name="gender" value="female" /> Female</label>
-        </div>
-        <div class="filter__column">
-            <h3 class="filter__heading">Color</h3>
-            <label><input type="radio" name="color" value="black" /> Black</label>
-            <label><input type="radio" name="color" value="white" /> White</label>
-            <label><input type="radio" name="color" value="yellow" /> Yellow</label>
-            <label><input type="radio" name="color" value="orange" /> Orange</label>
-            <label><input type="radio" name="color" value="magenta" /> Magenta</label>
-            <label><input type="radio" name="color" value="red" /> Red</label>
-            <label><input type="radio" name="color" value="green" /> Green</label>
-            <label><input type="radio" name="color" value="blue" /> Blue</label>
-        </div>
-
-        <div class="filter__btns">
-            <button class="btn btn__grey filter__clear">
-                <svg>
-                <use href="${icon}#icon-funnelX"></use>
-                </svg>
-                <span>clear</span>
-            </button>
-            <button class="btn filter__btn">
-                <svg>
-                <use href="${icon}#icon-funnel"></use>
-                </svg>
-                <span>filter</span>
-            </button>
-        </div>
-    `;
   }
 }
 

@@ -10,12 +10,13 @@ export const state = {
 };
 
 export const getDateTime = function () {
+  const getTowNum = (num) => `${num}`.padStart(2, "0");
   const now = new Date();
-  const day = `${now.getDate()}`.padStart(2, "0");
-  const month = `${now.getMonth() + 1}`.padStart(2, "0");
   const year = now.getFullYear();
-  const hour = now.getHours();
-  const minute = now.getMinutes();
+  const month = getTowNum(now.getMonth());
+  const day = getTowNum(now.getDate());
+  const hour = getTowNum(now.getHours());
+  const minute = getTowNum(now.getMinutes());
   const strTime = `${year}.${month}.${day} ${hour}:${minute}`;
   return strTime;
 };
@@ -50,12 +51,14 @@ export const loadImages = async function (kwArr, query = state.curQuery) {
     state.imgsUnsplash = imgsData;
 
     checkIfAllSaved();
-
-    return state;
   } catch (err) {
     console.error(`${err} 💥💥💥`);
     throw err;
   }
+};
+
+const persistSavedImgs = function () {
+  localStorage.setItem("savedImgs", JSON.stringify(state.savedImgs));
 };
 
 export const addSavedImgs = function (imgsUnsplash) {
@@ -66,6 +69,8 @@ export const addSavedImgs = function (imgsUnsplash) {
 
   state.savedImgs.push(imgsUnsplash);
   state.isAllSaved = checkIfAllSaved();
+
+  persistSavedImgs();
 };
 
 export const deleteSavedImgs = function (imgsUnsplash) {
@@ -75,6 +80,8 @@ export const deleteSavedImgs = function (imgsUnsplash) {
   if (matchIndex !== -1) state.savedImgs.splice(matchIndex, 1);
 
   state.isAllSaved = checkIfAllSaved();
+
+  persistSavedImgs();
 };
 
 export function checkIfAllSaved() {
@@ -92,7 +99,18 @@ export function checkIfAllSaved() {
   return result;
 }
 
+export const reloadSavedImgs = function (data) {
+  state.imgsUnsplash = data;
+  checkIfAllSaved();
+};
+
 function isImgsSetMatch(a, b) {
   if (a.length !== b.length) return false;
   return a.every((img, i) => img.id === b[i].id);
 }
+
+const init = function () {
+  const storage = localStorage.getItem("savedImgs");
+  if (storage) state.savedImgs = JSON.parse(storage);
+};
+init();
