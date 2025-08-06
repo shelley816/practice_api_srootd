@@ -1,8 +1,6 @@
 import icon from "url:../../img/icons.svg"; // Parcel 2
 import View from "./View.js";
 
-import { KEY_WORDS } from "../config";
-
 class ImagesView extends View {
   _parentEl = document.querySelector(".imgsContainer");
   _errorMessage = "We couldn't load images, please try again later!";
@@ -14,7 +12,7 @@ class ImagesView extends View {
   addHandlerRender(handler) {
     this._btnStar.addEventListener("click", function (e) {
       e.preventDefault();
-      handler(KEY_WORDS);
+      handler();
     });
   }
 

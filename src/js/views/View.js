@@ -45,9 +45,10 @@ export default class View {
     this._parentEl.innerHTML = "";
   }
 
-  renderSpiner() {
+  renderSpiner(withSpace = true) {
+    const space = withSpace ? '<div class="space"></div>' : "";
     const markup = `
-      <div class="space"></div>
+      ${space}
       <div class="spinner">
         <svg>
           <use href="${icon}#icon-loader"></use>
@@ -58,15 +59,14 @@ export default class View {
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
 
-  renderError(message = this._errorMessage) {
+  renderError({ message = this._errorMessage, withSpace = true }) {
+    const space = withSpace ? '<div class="space"></div>' : "";
     const markup = `
-      <div class="space"></div>
+      ${space}
       <div class="error">
-        <div>
-          <svg>
-            <use href="${icon}#icon-alert-triangle"></use>
-          </svg>
-        </div>
+        <svg>
+          <use href="${icon}#icon-alert-triangle"></use>
+        </svg>
         <p>${message}</p>
       </div>
     `;
@@ -74,15 +74,14 @@ export default class View {
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
 
-  renderMessage(message = this._message) {
+  renderMessage({ message = this._message, withSpace = true }) {
+    const space = withSpace ? '<div class="space"></div>' : "";
     const markup = `
-      <div class="space"></div>
+      ${space}
       <div class="message">
-        <div>
-          <svg>
-            <use href="${icon}#icon-smile"></use>
-          </svg>
-        </div>
+        <svg>
+          <use href="${icon}#icon-smile"></use>
+        </svg>
         <p>${message}</p>
       </div>
     `;

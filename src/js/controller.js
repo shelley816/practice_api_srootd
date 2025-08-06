@@ -5,17 +5,32 @@ import * as model from "./model.js";
 import imagesView from "./views/imagesView.js";
 import filterView from "./views/filterView.js";
 import saveView from "./views/saveView.js";
+import weatherView from "./views/weatherView.js";
 
 // if (model.hot) {
 //   model.hot.accept();
 // }
 
-const controlImages = async function (kwArr) {
+const controlWeather = async function () {
+  try {
+    weatherView.renderSpiner(false);
+
+    // Loading weather
+    await model.getWeatherData();
+
+    // Rendering weather
+    weatherView.render(model.state.weatherInfo);
+  } catch (err) {
+    weatherView.renderError({ withSpace: false });
+  }
+};
+
+const controlImages = async function () {
   try {
     imagesView.renderSpiner();
 
     // Loading images
-    await model.loadImages(kwArr);
+    await model.loadImages();
 
     // Rendering images
     imagesView.render(model.state);
@@ -70,6 +85,7 @@ const controlReloadImgs = function (data) {
 };
 
 const init = function () {
+  weatherView.addHendlerRender(controlWeather);
   imagesView.addHandlerRender(controlImages);
   imagesView.addHandlerAddSave(controlAddSaveImgs);
   filterView.addHandlerFilter(controlFilterImages);

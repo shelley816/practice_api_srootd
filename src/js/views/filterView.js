@@ -1,6 +1,4 @@
 import View from "./View.js";
-import icon from "url:../../img/icons.svg"; // Parcel 2
-import { KEY_WORDS } from "../config";
 
 class FilterView extends View {
   _parentEl = document.querySelector(".filter");
@@ -40,7 +38,7 @@ class FilterView extends View {
       const color = data.color ? `+${data.color}` : "";
       const dataStr = gender + color;
 
-      handler(KEY_WORDS, dataStr);
+      handler(dataStr);
     });
   }
 

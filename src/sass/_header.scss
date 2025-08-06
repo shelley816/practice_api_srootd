@@ -5,14 +5,14 @@
   grid-area: head;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   background: base.$dark-gradient;
   z-index: base.$z-index;
 
   &__logo {
     line-height: 2.5rem;
     font-size: 2.5rem;
-    margin-left: 2.5rem;
+    margin: 0 2.5rem;
     color: base.$color-primary;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
   }
@@ -74,10 +74,48 @@
     color: base.$color-t-dark;
   }
 
-  @media only screen and (max-width: base.$bp-small) {
+  @media only screen and (max-width: base.$bp-medium) {
     position: fixed;
     top: unset;
     bottom: 2rem;
     height: auto;
+  }
+}
+
+.weather {
+  position: absolute;
+  right: 0;
+  height: 5rem;
+  color: base.$color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+  margin-right: 2.5rem;
+  max-width: 40rem;
+
+  &__icon {
+    img {
+      height: 5rem;
+      width: 5rem;
+    }
+  }
+
+  &__description {
+    font-size: 1.5rem;
+    display: inline-block;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+
+    p {
+      text-transform: capitalize;
+    }
+
+    p:last-child {
+      @media only screen and (max-width: base.$bp-small) {
+        display: none;
+      }
+    }
   }
 }

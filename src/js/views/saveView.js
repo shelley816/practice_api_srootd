@@ -3,7 +3,6 @@ import { SAVED_IMGS_LIMIT } from "../config";
 
 class SaveView extends View {
   _parentEl = document.querySelector(".saved__list");
-  _errorMessage = "";
   _message = "No images yet. Fine a nice inspiration and save it ;)";
 
   addHendlerRender(handler) {

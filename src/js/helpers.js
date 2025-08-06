@@ -1,6 +1,7 @@
 import { TIMEOUT_SEC } from "./config.js";
 
-const apiKey = process.env.API_ACCESS_KEY;
+// Parcel 和 Vite 寫法不同
+const unsplashKey = process.env.VITE_API_KEY_UNSPLASH;
 const errMessage = "Loading images failed, please try again later!";
 
 const timeout = function (s) {
@@ -17,7 +18,7 @@ export const getJSON = async function (urls) {
       urls.map(async (url) => {
         const fetchPro = fetch(url, {
           headers: {
-            Authorization: `Client-ID ${apiKey}`,
+            Authorization: `Client-ID ${unsplashKey}`,
           },
         });
         const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
