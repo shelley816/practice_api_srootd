@@ -6,6 +6,11 @@
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist"
   },
+  "targets": {
+    "default": {
+      "optimize": false
+    }
+  },
   "author": "Shelley Chen",
   "license": "ISC",
   "devDependencies": {
