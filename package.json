@@ -2,9 +2,10 @@
   "name": "srootd",
   "version": "1.0.0",
   "description": "Provide the inspiration of today's outfit",
+  "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Shelley Chen",
   "license": "ISC",
