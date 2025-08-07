@@ -199,7 +199,7 @@
 .error {
   max-width: 40rem;
   margin: 0 auto;
-  padding: 5rem 2rem;
+  padding: 5rem 3rem;
   color: base.$color-t-light;
 
   display: flex;
@@ -212,7 +212,7 @@
   }
 
   p {
-    height: 3rem;
+    min-height: 3rem;
     margin-left: 1.5rem;
     font-size: 1.8rem;
     font-weight: 600;
