@@ -37,7 +37,7 @@ const controlImages = async function () {
 
     // Updating Saved Images
   } catch (err) {
-    imagesView.renderError();
+    imagesView.renderError({ message: err.message });
   }
 };
 
@@ -54,7 +54,7 @@ const controlFilterImages = async function (kwArr, data) {
     // Rendering images
     imagesView.render(model.state);
   } catch (err) {
-    filterView.renderError();
+    filterView.renderError({ message: err.message });
   }
 };
 

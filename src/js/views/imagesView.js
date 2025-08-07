@@ -72,6 +72,26 @@ class ImagesView extends View {
             </div>
             <div class="preview__info">
               <h2 class="preview__title">${img.keyword}</h2>
+              ${
+                img.keyword === "coat"
+                  ? `<p class="preview__description">It's cold today. Dress warm!</p>`
+                  : ""
+              }
+              ${
+                img.keyword === "scarf"
+                  ? `<p class="preview__description">It's cold today. Dress warm!</p>`
+                  : ""
+              }
+              ${
+                img.keyword === "sunglasses"
+                  ? `<p class="preview__description">It’s very sunny today, so make sure to protect yourself from the sun.</p>`
+                  : ""
+              }
+              ${
+                img.keyword === "umbrella"
+                  ? `<p class="preview__description">Looks like it might rain today, don’t forget to take an umbrella!</p>`
+                  : ""
+              }
               <div class="author">
                 <a href="${img.user.link}" target="_blank">
                   ${

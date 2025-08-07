@@ -1,7 +1,7 @@
 import { TIMEOUT_SEC } from "./config.js";
 
 // Parcel 和 Vite 寫法不同
-const unsplashKey = process.env.VITE_API_KEY_UNSPLASH;
+const unsplashKey = process.env.API_KEY_UNSPLASH;
 const errMessage = "Loading images failed, please try again later!";
 
 const timeout = function (s) {
