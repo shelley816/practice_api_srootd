@@ -24,10 +24,14 @@
   }
 }
 
+.btn__grey {
+  background-image: base.$grey-gradient;
+}
+
 .btn {
   @extend %btn;
 
-  padding: 1.5rem 4rem;
+  padding: 1.2rem 3rem;
   font-size: 1.5rem;
   font-weight: 600;
 
@@ -174,8 +178,8 @@
   text-align: center;
 
   svg {
-    height: 6rem;
-    width: 6rem;
+    height: 5rem;
+    width: 5rem;
     fill: base.$color-primary;
     animation: rotate 2s infinite linear;
   }
@@ -195,7 +199,8 @@
 .error {
   max-width: 40rem;
   margin: 0 auto;
-  padding: 5rem 4rem;
+  padding: 5rem 2rem;
+  color: base.$color-t-light;
 
   display: flex;
 
@@ -207,9 +212,15 @@
   }
 
   p {
+    height: 3rem;
     margin-left: 1.5rem;
     font-size: 1.8rem;
-    line-height: 1.5;
     font-weight: 600;
+  }
+}
+
+.error {
+  svg {
+    fill: base.$color-third;
   }
 }

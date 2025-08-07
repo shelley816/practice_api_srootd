@@ -3,8 +3,30 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="穿搭, 天氣, 穿搭建議, OOTD, Fashion, Weather" />
+
+  <!-- 社群分享：顯示網站標題 -->
+  <meta property="og:title" content="每日穿搭靈感" />
+  <!-- 社群分享：顯示網站描述 -->
+  <meta property="og:description" content="根據天氣推薦今日穿搭，讓你時時刻刻都很有型！" />
+  <!-- 社群分享：縮圖 -->
+  <meta property="og:image" content="src/img/opengraph-image.jpg" />
+  <!-- 社群分享：網址 -->
+  <meta property="og:url" content="https://srootd-shelley.netlify.app/" />
+  <!-- 類型 -->
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter 分享設定 -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="每日穿搭靈感" />
+  <meta name="twitter:description" content="根據天氣推薦今日穿搭，讓你時時刻刻都很有型！" />
+  <meta name="twitter:image" content="src/img/opengraph-image.jpg" />
+
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#ffffff">
+
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700" rel="stylesheet" />
   <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon" />
 
@@ -21,7 +43,7 @@
       <div class="start">
         <button class="btn start__btn">
           <svg class="search__icon">
-            <use href="src/img/icons.svg#icon-MagicWand"></use>
+            <use href="src/img/icons.svg#icon-magicWand"></use>
           </svg>
           <span>inspiration</span>
         </button>
@@ -30,57 +52,127 @@
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item">
-            <button class="nav__btn nav__btn--add-recipe">
+            <button class="nav__btn nav__btn--filter">
               <svg class="nav__icon">
-                <use href="src/img/icons.svg#icon-edit"></use>
+                <use href="src/img/icons.svg#icon-funnel"></use>
               </svg>
               <span>Filter</span>
             </button>
           </li>
-          <!-- <li class="nav__item">
-            <button class="nav__btn nav__btn--bookmarks">
+          <li class="nav__item">
+            <button class="nav__btn nav__btn--saved">
               <svg class="nav__icon">
-                <use href="src/img/icons.svg#icon-bookmark"></use>
+                <use href="src/img/icons.svg#icon-folder-open"></use>
               </svg>
-              <span>Saved results</span>
-            </button> -->
-          <!-- <div class="bookmarks">
-              <div class="bookmarks__list">
-                <div class="message">
+              <span>Saved</span>
+            </button>
+            <div class="saved">
+              <ul class="saved__list">
+                <!-- <div class="message">
                   <div>
                     <svg>
                       <use href="src/img/icons.svg#icon-smile"></use>
                     </svg>
                   </div>
                   <p>
-                    No bookmarks yet. Find a nice recipe and bookmark it :)
+                    No images yet. Fine a nice inspiration and save it ;)
                   </p>
-                </div>
+                </div> -->
 
-                
-                <div class="preview__wrap">
-                  <div class="preview__fig">
-                    <img src="src/img/test-1.jpg" alt="Test" />
+                <!-- <li class="saved__field saved__field--active">
+                  <div class="preview__item">
+                    <div class="preview__fig">
+                      <img src="src/img/dmitriy-k-GJaUXfIIcwM-unsplash-s.jpg" alt="Test" />
+                    </div>
                   </div>
-                  <h2 class="preview__title">TOP</h2>
-                </div>
-              </div>
+                  <div class="preview__info">
+                    <h2 class="preview__title">2025.08.01</h2>
+                    <div class="author">
+                      <div>
+                        <div class="author__img">
+                          <img src="src/img/dmitriy-k-GJaUXfIIcwM-unsplash-s.jpg" alt="" />
+                        </div>
+                        <h3 class="author__name">Sergey Sokolov</h3>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="saved__field">
+                  <div class="preview__item">
+                    <div class="preview__fig">
+                      <img src="src/img/dmitriy-k-GJaUXfIIcwM-unsplash-s.jpg" alt="Test" />
+                    </div>
+                  </div>
+                  <div class="preview__info">
+                    <h2 class="preview__title">2025.08.01</h2>
+                    <div class="author">
+                      <div>
+                        <div class="author__img">
+                          <img src="src/img/dmitriy-k-GJaUXfIIcwM-unsplash-s.jpg" alt="" />
+                        </div>
+                        <h3 class="author__name">Sergey Sokolov</h3>
+                      </div>
+                    </div>
+                  </div>
+                </li> -->
+              </ul>
             </div>
-          </li> -->
+          </li>
         </ul>
       </nav>
+      <div class="weather">
+        <div class="message">
+          <svg>
+            <use href="src/img/icons.svg#icon-smile"></use>
+          </svg>
+          <p>Loading data...</p>
+        </div>
+        <!-- <div class="weather__icon">
+          <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="Weather icon" />
+        </div>
+        <div class="weather__description">
+          <p>37 <span>°C</span></p>
+          <p>broken clouds</p>
+        </div> -->
+      </div>
     </header>
 
-    <div class="preview">
-      <div class="preview__top">
+    <div class="preview imgsContainer">
+      <div class="space"></div>
+      <div class="message">
+        <div>
+          <svg>
+            <use href="src/img/icons.svg#icon-smile"></use>
+          </svg>
+        </div>
+        <p>Start by clicking the button for some outfit inspiration. Have fun!</p>
+      </div>
+      <!-- <div class="preview__top">
         <div class="preview__fig">
           <img src="src/img/sergey-sokolov-nebs1m0P1JQ-unsplash-s.jpg" alt="Test" />
         </div>
         <div class="preview__info">
-          <h2 class="preview__title">TOP</h2>
-          <p class="preview__description">woman in white and black stripe long sleeve shirt and blue denim shorts
-            standing
-            beside brown</p>
+          <div>
+            <h2 class="preview__title">TOP</h2>
+            <p class="preview__description">woman in white and black stripe long sleeve shirt and blue denim shorts
+              standing
+              beside brown</p>
+            <div class="author">
+              <a href="#" target="_blank">
+                <div class="author__img">
+                  <img src="src/img/dmitriy-k-GJaUXfIIcwM-unsplash-s.jpg" alt="" />
+                </div>
+                <h3 class="author__name">Sergey Sokolov</h3>
+              </a>
+            </div>
+          </div>
+          <div class="saved__icon">
+            <button class="nav__btn">
+              <svg class="nav__icon">
+                <use href="src/img/icons.svg#icon-star"></use>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
       <div class="preview__wrap">
@@ -90,6 +182,14 @@
           </div>
           <div class="preview__info">
             <h2 class="preview__title">BOTTOM</h2>
+            <div class="author">
+              <a href="#" target="_blank">
+                <div class="author__img">
+                  <img src="src/img/dmitriy-k-GJaUXfIIcwM-unsplash-s.jpg" alt="" />
+                </div>
+                <h3 class="author__name">Sergey Sokolov</h3>
+              </a>
+            </div>
           </div>
         </div>
         <div class="preview__item">
@@ -108,61 +208,79 @@
             <h2 class="preview__title">BOTTOM</h2>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <p class="copyright">
       &copy; Copyright by
-      <a class="twitter-link" target="_blank" href="https://twitter.com/jonasschmedtman">Shelley Chen</a>.
+      <a class="twitter-link" target="_blank" href="https://shelley-website.vercel.app/">Shelley Chen</a>.
     </p>
   </div>
 
   </div>
 
   <div class="overlay hidden"></div>
-  <div class="add-recipe-window hidden">
+  <div class="filter-window hidden">
     <button class="btn--close-modal">&times;</button>
-    <form class="upload">
-      <!-- <div class="upload__column">
-        <h3 class="upload__heading">Recipe data</h3>
-        <label>Title</label>
-        <input value="TEST16" required name="title" type="text" />
-        <label>URL</label>
-        <input value="TEST16" required name="sourceUrl" type="text" />
-        <label>Image URL</label>
-        <input value="TEST16" required name="image" type="text" />
-        <label>Publisher</label>
-        <input value="TEST16" required name="publisher" type="text" />
-        <label>Prep time</label>
-        <input value="23" required name="cookingTime" type="number" />
-        <label>Servings</label>
-        <input value="23" required name="servings" type="number" />
-      </div>
+    <div class="filterContainer">
+      <form class="filter">
+        <div class="filter__column">
+          <h3 class="filter__heading">Gender</h3>
+          <label><input type="radio" name="gender" value="male" /> Male</label>
+          <label><input type="radio" name="gender" value="female" /> Female</label>
+        </div>
+        <div class="filter__column">
+          <h3 class="filter__heading">Color</h3>
+          <label><input type="radio" name="color" value="black" /> Black</label>
+          <label><input type="radio" name="color" value="white" /> White</label>
+          <label><input type="radio" name="color" value="yellow" /> Yellow</label>
+          <label><input type="radio" name="color" value="orange" /> Orange</label>
+          <label><input type="radio" name="color" value="magenta" /> Magenta</label>
+          <label><input type="radio" name="color" value="red" /> Red</label>
+          <label><input type="radio" name="color" value="green" /> Green</label>
+          <label><input type="radio" name="color" value="blue" /> Blue</label>
+        </div>
 
-      <div class="upload__column">
-        <h3 class="upload__heading">Ingredients</h3>
-        <label>Ingredient 1</label>
-        <input value="0.5,kg,Rice" type="text" required name="ingredient-1"
-          placeholder="Format: 'Quantity,Unit,Description'" />
-        <label>Ingredient 2</label>
-        <input value="1,,Avocado" type="text" name="ingredient-2" placeholder="Format: 'Quantity,Unit,Description'" />
-        <label>Ingredient 3</label>
-        <input value=",,salt" type="text" name="ingredient-3" placeholder="Format: 'Quantity,Unit,Description'" />
-        <label>Ingredient 4</label>
-        <input type="text" name="ingredient-4" placeholder="Format: 'Quantity,Unit,Description'" />
-        <label>Ingredient 5</label>
-        <input type="text" name="ingredient-5" placeholder="Format: 'Quantity,Unit,Description'" />
-        <label>Ingredient 6</label>
-        <input type="text" name="ingredient-6" placeholder="Format: 'Quantity,Unit,Description'" />
-      </div>
+        <div class="filter__btns">
+          <button class="btn btn__grey filter__clear">
+            <svg>
+              <use href="src/img/icons.svg#icon-funnelX"></use>
+            </svg>
+            <span>clear</span>
+          </button>
+          <button class="btn filter__btn">
+            <svg>
+              <use href="src/img/icons.svg#icon-funnel"></use>
+            </svg>
+            <span>filter</span>
+          </button>
+        </div>
+        <!-- <div class="filter__column">
+          <h3 class="filter__heading">Gender</h3>
+          <label><input type="radio" name="gender" value="male" /> Male</label>
+          <label><input type="radio" name="gender" value="female" /> Female</label>
+        </div>
+        <div class="filter__column">
+          <h3 class="filter__heading">Color</h3>
+          <label><input type="radio" name="color" value="black" /> Black</label>
+          <label><input type="radio" name="color" value="white" /> White</label>
+          <label><input type="radio" name="color" value="yellow" /> Yellow</label>
+          <label><input type="radio" name="color" value="orange" /> Orange</label>
+          <label><input type="radio" name="color" value="magenta" /> Magenta</label>
+          <label><input type="radio" name="color" value="red" /> Red</label>
+          <label><input type="radio" name="color" value="green" /> Green</label>
+          <label><input type="radio" name="color" value="blue" /> Blue</label>
+        </div>
 
-      <button class="btn upload__btn">
-        <svg>
-          <use href="src/img/icons.svg#icon-upload-cloud"></use>
-        </svg>
-        <span>Upload</span>
-      </button> -->
-    </form>
+        <button class="btn filter__btn">
+          <svg>
+            <use href="src/img/icons.svg#icon-funnel"></use>
+          </svg>
+          <span>filter</span>
+        </button> -->
+      </form>
+    </div>
+  </div>
   </div>
 </body>
 

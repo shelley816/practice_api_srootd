@@ -10,6 +10,17 @@
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.15.4",
-    "parcel": "^2.15.4"
-  }
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.1",
+    "os-browserify": "^0.3.0",
+    "parcel": "^2.15.4",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "core-js": "^3.44.0",
+    "dotenv": "^17.2.1",
+    "regenerator-runtime": "^0.14.1"
+  },
+  "browserslist": "last 2 versions, > 0.5% and ie >= 11"
 }
