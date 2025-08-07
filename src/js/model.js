@@ -86,35 +86,36 @@ export const getDateTime = function () {
 export const loadImages = async function (query = state.curQuery) {
   try {
     const kwArr = KEY_WORDS;
-    const urlKwArr = kwArr.map((key) => `fashion+${key}`);
+    const urlKwArr = kwArr.map((key) => `fashion+${key}${query}`);
+    let otherArr = [];
 
     // Adding weather conditions
-    let weatherKwArr = urlKwArr;
     if (
       state.weatherInfo.temperature >= 16 &&
       state.weatherInfo.temperature <= 20
     )
-      testKw.push("jacket");
+      otherArr.push("jacket");
     if (state.weatherInfo.temperature < 15) {
-      weatherKwArr.push("coat", "scarf");
-      kwArr.push("coat", "scarf");
+      otherArr.push("coat", "scarf");
     }
     if (state.weatherInfo.uv) {
-      weatherKwArr.push("sunglasses");
-      kwArr.push("sunglasses");
+      otherArr.push("sunglasses");
     }
     if (state.weatherInfo.pop > 30) {
-      weatherKwArr.push("umbrella");
-      kwArr.push("umbrella");
+      otherArr.push("umbrella");
     }
+    const uniqueArr = [...new Set(otherArr)];
+    const imgKeyArr = [...KEY_WORDS, ...uniqueArr];
+    const allArr = [...urlKwArr, ...uniqueArr];
 
     // 預設 false
     state.isAllSaved = false;
 
     state.curQuery = query;
-    const urls = urlKwArr.map(
-      (key) => `${API_UNSPLASH_URL}/photos/random?query=${key}${query}`
+    const urls = allArr.map(
+      (key) => `${API_UNSPLASH_URL}/photos/random?query=${key}`
     );
+    console.log(urls);
 
     const data = await getJSON(urls);
     const imgsData = data.map((img, index) => {
@@ -130,7 +131,7 @@ export const loadImages = async function (query = state.curQuery) {
         description: img.description,
         color: img.color,
         urls: img.urls,
-        keyword: KEY_WORDS[index],
+        keyword: imgKeyArr[index],
         dateTime: getDateTime(),
       };
     });
