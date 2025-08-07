@@ -29,7 +29,6 @@
 
     display: grid;
     grid-template-columns: 11fr 1fr;
-    gap: 1rem;
   }
 
   &__wrap {
@@ -86,7 +85,7 @@
   &__description {
     font-size: 1.5rem;
     color: base.$color-t-light;
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
 
   .space {

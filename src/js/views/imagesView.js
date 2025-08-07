@@ -84,12 +84,12 @@ class ImagesView extends View {
               }
               ${
                 img.keyword === "sunglasses"
-                  ? `<p class="preview__description">It’s very sunny today, so make sure to protect yourself from the sun.</p>`
+                  ? `<p class="preview__description">It’s sunny today. Wear sunscreen!</p>`
                   : ""
               }
               ${
                 img.keyword === "umbrella"
-                  ? `<p class="preview__description">Looks like it might rain today, don’t forget to take an umbrella!</p>`
+                  ? `<p class="preview__description">Might rain today. Bring an umbrella!</p>`
                   : ""
               }
               <div class="author">
