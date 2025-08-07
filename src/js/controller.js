@@ -75,7 +75,7 @@ const controlSavedImgs = async function () {
   try {
     saveView.render(model.state);
   } catch (err) {
-    saveView.renderMessage();
+    saveView.renderMessage({ message: err.message, withSpace: false });
   }
 };
 

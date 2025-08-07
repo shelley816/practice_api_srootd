@@ -115,7 +115,6 @@ export const loadImages = async function (query = state.curQuery) {
     const urls = allArr.map(
       (key) => `${API_UNSPLASH_URL}/photos/random?query=${key}`
     );
-    console.log(urls);
 
     const data = await getJSON(urls);
     const imgsData = data.map((img, index) => {
