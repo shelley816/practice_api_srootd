@@ -1,19 +1,18 @@
 @use "base";
 
 .saved {
-  position: absolute;
+  position: relative;
   left: 0;
   z-index: 10;
   width: 35rem;
+  height: auto;
   background-color: base.$color-dark-1;
   box-shadow: 0 0.8rem 5rem 2rem rgba(base.$color-t-dark, 0.1);
-
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.5s 0.2s;
+  clip-path: inset(0 0 100% 0);
 
   @media only screen and (max-width: base.$bp-small) {
     position: fixed;
+    left: 0;
     width: 100vw;
   }
 
@@ -87,9 +86,28 @@
     }
   }
 
-  &:hover,
-  .nav__btn--saved:hover + & {
-    visibility: visible;
-    opacity: 1;
+  // &:hover,
+  // .nav__btn--saved:hover + & {
+  //   animation: reveal 1s forwards cubic-bezier(0.77, 0, 0.175, 1);
+  // }
+}
+
+.reveal {
+  animation: reveal 1s forwards cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.conceal {
+  animation: conceal 1s forwards cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@keyframes reveal {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes conceal {
+  to {
+    clip-path: inset(0 0 100% 0);
   }
 }

@@ -132,6 +132,7 @@ export const loadImages = async function (query = state.curQuery) {
         urls: img.urls,
         keyword: imgKeyArr[index],
         dateTime: getDateTime(),
+        downloadLocation: img.links.download_location,
       };
     });
     state.imgsUnsplash = imgsData;

@@ -5,6 +5,7 @@
 .preview {
   grid-area: preview;
   margin-top: -(base.$header-height);
+  padding-bottom: 5rem;
 
   &__top {
     position: relative;
@@ -28,7 +29,11 @@
     bottom: 0;
 
     display: grid;
-    grid-template-columns: 11fr 1fr;
+    // grid-template-columns: 11fr 1fr;
+
+    @media only screen and (max-width: base.$bp-small) {
+      padding: 1.5rem;
+    }
   }
 
   &__wrap {
@@ -46,7 +51,15 @@
     margin-top: -(base.$header-height);
 
     @media only screen and (max-width: base.$bp-small) {
+      gap: 1.5rem;
+      padding: 1rem 1.5rem;
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .preview__info {
+      @media only screen and (max-width: base.$bp-small) {
+        padding: 1rem;
+      }
     }
   }
 

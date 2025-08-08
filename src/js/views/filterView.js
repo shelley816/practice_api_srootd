@@ -48,12 +48,7 @@ class FilterView extends View {
   }
 
   _addHandlerShowWindow() {
-    this._btnOpen.addEventListener(
-      "click",
-      function () {
-        this.toggleWindow();
-      }.bind(this)
-    );
+    this._btnOpen.addEventListener("click", this.toggleWindow.bind(this));
   }
 
   _addHandlerHideWindow() {

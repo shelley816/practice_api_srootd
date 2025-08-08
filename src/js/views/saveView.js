@@ -5,6 +5,16 @@ class SaveView extends View {
   _parentEl = document.querySelector(".saved__list");
   _message = "No images yet. Fine a nice inspiration and save it ;)";
 
+  _itemSaved = document.querySelector(".nav__item--saved");
+  _btnSaved = document.querySelector(".nav__btn--saved");
+  _savedEl = document.querySelector(".saved");
+
+  constructor() {
+    super();
+    this._addHandlerShowSaved();
+    this._addHandlerHideSaved();
+  }
+
   addHendlerRender(handler) {
     window.addEventListener("load", handler);
   }
@@ -25,8 +35,29 @@ class SaveView extends View {
           )
         );
         handler(matchedGroup);
+        this.hideSaved();
       }.bind(this)
     );
+  }
+
+  showSaved() {
+    this._btnSaved.classList.add("hoverBg");
+    this._savedEl.classList.remove("conceal");
+    this._savedEl.classList.add("reveal");
+  }
+
+  hideSaved() {
+    this._btnSaved.classList.remove("hoverBg");
+    this._savedEl.classList.remove("reveal");
+    this._savedEl.classList.add("conceal");
+  }
+
+  _addHandlerShowSaved() {
+    this._itemSaved.addEventListener("mouseenter", this.showSaved.bind(this));
+  }
+
+  _addHandlerHideSaved() {
+    this._itemSaved.addEventListener("mouseleave", this.hideSaved.bind(this));
   }
 
   _generateMarkup() {
