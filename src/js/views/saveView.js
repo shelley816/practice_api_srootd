@@ -11,8 +11,7 @@ class SaveView extends View {
 
   constructor() {
     super();
-    this._addHandlerShowSaved();
-    this._addHandlerHideSaved();
+    this._savedMenuHandlers();
   }
 
   addHendlerRender(handler) {
@@ -23,6 +22,8 @@ class SaveView extends View {
     this._parentEl.addEventListener(
       "click",
       function (e) {
+        if (e.target.closest('[data-role="saved-toggle"]')) return;
+
         const btn = e.target.closest(".saved__field");
         if (!btn) return;
 
@@ -52,12 +53,43 @@ class SaveView extends View {
     this._savedEl.classList.add("conceal");
   }
 
-  _addHandlerShowSaved() {
-    this._itemSaved.addEventListener("mouseenter", this.showSaved.bind(this));
-  }
+  _savedMenuHandlers() {
+    const isHoverable = window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    ).matches;
 
-  _addHandlerHideSaved() {
-    this._itemSaved.addEventListener("mouseleave", this.hideSaved.bind(this));
+    if (isHoverable) {
+      // 桌機：用 hover
+      this._itemSaved.addEventListener(
+        "pointerenter",
+        this.showSaved.bind(this)
+      );
+      this._itemSaved.addEventListener(
+        "pointerleave",
+        this.hideSaved.bind(this)
+      );
+    } else {
+      // 手機：用點擊切換
+      this._itemSaved.addEventListener("click", (e) => {
+        // 若點到的是「切換按鈕」就 toggle
+        const toggleBtn = e.target.closest('[data-role="saved-toggle"]');
+        if (toggleBtn) {
+          this._savedEl.classList.contains("reveal")
+            ? this.hideSaved()
+            : this.showSaved();
+        }
+      });
+
+      // 點選單外關閉
+      document.addEventListener("click", (e) => {
+        if (!this._itemSaved.contains(e.target)) this.hideSaved();
+      });
+
+      // 避免在選單內點擊就冒泡到 document 而關閉
+      this._savedEl.addEventListener("click", (e) => e.stopPropagation(), {
+        passive: true,
+      });
+    }
   }
 
   _generateMarkup() {
