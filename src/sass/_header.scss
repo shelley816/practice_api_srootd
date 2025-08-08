@@ -2,14 +2,16 @@
 
 .header {
   position: relative;
-  grid-area: head;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: start;
   background: base.$dark-gradient;
   z-index: base.$z-index;
 
   &__logo {
+    display: flex;
+    align-items: center;
+    height: base.$header-height;
     line-height: 2.5rem;
     font-size: 2.5rem;
     margin: 0 2.5rem;
@@ -29,19 +31,19 @@
   &__list {
     list-style: none;
     display: flex;
-    height: 100%;
+    height: base.$header-height;
   }
 
   &__item {
     position: relative;
 
-    &:hover > .nav__btn {
+    &:hover > .nav__btn--filter {
       background-color: rgba(base.$color-dark-1, 0.8);
     }
   }
 
   &__btn {
-    height: 100%;
+    height: base.$header-height;
     font-family: inherit;
     color: base.$color-primary;
     font-size: 1.4rem;
@@ -76,9 +78,9 @@
 
 .start {
   position: absolute;
-  top: 50%;
+  top: 3rem;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   &__btn {
     color: base.$color-t-dark;
   }
@@ -86,7 +88,7 @@
   @media only screen and (max-width: base.$bp-medium) {
     position: fixed;
     top: unset;
-    bottom: 2rem;
+    bottom: 5rem;
     height: auto;
   }
 }
@@ -94,7 +96,7 @@
 .weather {
   position: absolute;
   right: 0;
-  height: 5rem;
+  height: base.$header-height;
   color: base.$color-primary;
   display: flex;
   align-items: center;
@@ -132,4 +134,8 @@
       }
     }
   }
+}
+
+.hoverBg {
+  background-color: rgba(base.$color-dark-1, 0.8);
 }

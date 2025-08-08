@@ -82,6 +82,7 @@ const controlSavedImgs = async function () {
 const controlReloadImgs = function (data) {
   model.reloadSavedImgs(data);
   imagesView.render(model.state);
+  saveView.update(model.state);
 };
 
 const init = function () {
