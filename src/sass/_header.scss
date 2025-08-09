@@ -8,6 +8,11 @@
   background: base.$dark-gradient;
   z-index: base.$z-index;
 
+  @media only screen and (max-width: base.$bp-small) {
+    position: fixed;
+    width: 100vw;
+  }
+
   &__logo {
     display: flex;
     align-items: center;

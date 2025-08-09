@@ -37,7 +37,7 @@ const controlImages = async function () {
 
     // Updating Saved Images
   } catch (err) {
-    imagesView.renderError({ message: err.message });
+    imagesView.renderError({ message: err.message, withSpace: true });
   }
 };
 
