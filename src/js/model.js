@@ -113,7 +113,8 @@ export const loadImages = async function (query = state.curQuery) {
 
     state.curQuery = query;
     const urls = allArr.map(
-      (key) => `${API_UNSPLASH_URL}/photos/random?query=${key}`
+      (key) =>
+        `${API_UNSPLASH_URL}/photos/random?orientation=portrait&query=${key}`
     );
 
     const data = await getJSON(urls);
